@@ -49,7 +49,6 @@ namespace iFakeLocation {
                 Process.Start(url);
             }
             catch {
-#if NETCOREAPP2_2
                 // hack because of this: https://github.com/dotnet/corefx/issues/10361
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) {
                     url = url.Replace("&", "^&");
@@ -62,11 +61,8 @@ namespace iFakeLocation {
                     Process.Start("open", url);
                 }
                 else {
-#endif
                     throw;
-#if NETCOREAPP2_2
                 }
-#endif
             }
         }
 
